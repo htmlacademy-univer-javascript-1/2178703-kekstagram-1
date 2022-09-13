@@ -1,5 +1,4 @@
 let getRandomInt = function(leftBorder, rightBorder) {
-
   if(leftBorder > rightBorder){
     throw new Error('Левая граница больше правой');
   }
