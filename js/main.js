@@ -1,4 +1,4 @@
-function getRandomInt (leftBorder, rightBorder) {
+const getRandomInt = function (leftBorder, rightBorder) {
   if(leftBorder > rightBorder){
     throw new Error('Левая граница больше правой');
   }
@@ -6,6 +6,5 @@ function getRandomInt (leftBorder, rightBorder) {
   return Math.floor(Math.random() * (rightBorder + 1 - leftBorder)) + leftBorder;
 };
 
-function checkLengthOfComment (comment, maxLength) {
-  String(comment).length <= maxLength;
-};
+const checkLengthOfComment = (comment, maxLength) => String(comment).length <= maxLength;
+
