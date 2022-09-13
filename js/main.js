@@ -7,7 +7,5 @@ let getRandomInt = function(leftBorder, rightBorder) {
   return Math.floor(Math.random() * (rightBorder + 1 - leftBorder)) + leftBorder;
 }
 
-let checkLengthOfComment = (comment, maxLength) => String(comment).length <= maxLength;
-
-
+let checkLengthOfComment = (comment, maxLength = 140) => String(comment).length <= maxLength;
 
