@@ -1,9 +1,9 @@
-const getRandomInt = function (leftBorder, rightBorder) {
-  if(leftBorder > rightBorder){
-    throw new Error('Левая граница больше правой');
-  }
+const getRandomInt = (leftBorder, rightBorder) => {
 
-  return Math.floor(Math.random() * (rightBorder + 1 - leftBorder)) + leftBorder;
+  const leftSide = Math.min(leftBorder, rightBorder);
+  const rightSide = Math.max(leftBorder, rightBorder);
+
+  return Math.floor(Math.random() * (rightSide + 1 - leftSide)) + leftSide;
 };
 
 getRandomInt(0, 50);
