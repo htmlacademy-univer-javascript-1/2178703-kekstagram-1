@@ -6,8 +6,8 @@ const getRandomInt = (leftBorder, rightBorder) => {
   return Math.floor(Math.random() * (rightSide + 1 - leftSide)) + leftSide;
 };
 
-console.log(getRandomInt(4, 6));
+getRandomInt(0, 50);
 
 const checkLengthOfComment = (comment, maxLength) => String(comment).length <= maxLength;
 
-
+checkLengthOfComment('GitHub просит вызвать функции', 140);
