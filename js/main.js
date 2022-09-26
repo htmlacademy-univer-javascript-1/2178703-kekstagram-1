@@ -1,12 +1,12 @@
 const NAMES = ['Александр', 'Кристина', 'Анна', 'Дмитрий', 'Дарья', 'Елизавета', 'Максим'];
 
 const MESSAGES = [
-'Всё отлично!',
-'В целом всё неплохо. Но не всё.',
-'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
 const DESCRIPTIONS = [
@@ -25,6 +25,8 @@ const CountLike = {
   MAX: 200
 };
 
+const PHOTOS = Array.from({length: COUNT_PHOTO}).map((value, index) => value = createPhotoData(index + 1));
+
 const getRandomPositiveInteger = (a, b) => {
 
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -33,9 +35,7 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
-const checkStringLength = (string, maxLength) => {
-  return string.length <= maxLength;
-};
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
 const createComment = (id) => ({
   id,
@@ -51,5 +51,6 @@ const createPhotoData = (id) => ({
   likes: getRandomPositiveInteger(CountLike.MIN, CountLike.MAX),
   comments: createComment(id)
 });
-const PHOTOS = Array.from({length: COUNT_PHOTO}).map((value, index) => value = createPhotoData(index + 1));
-PHOTOS;
+
+checkStringLength('Вызов функции', 140);
+PHOTOS();
