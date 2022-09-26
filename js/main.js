@@ -25,8 +25,6 @@ const CountLike = {
   MAX: 200
 };
 
-const PHOTOS = Array.from({length: COUNT_PHOTO}).map((value, index) => value = createPhotoData(index + 1));
-
 const getRandomPositiveInteger = (a, b) => {
 
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -51,6 +49,9 @@ const createPhotoData = (id) => ({
   likes: getRandomPositiveInteger(CountLike.MIN, CountLike.MAX),
   comments: createComment(id)
 });
+
+const EMPTY_PHOTOS = Array.from({length: COUNT_PHOTO});
+const PHOTO = EMPTY_PHOTOS.map((value, index) => value = createPhotoData(index + 1));
 
 checkStringLength('Вызов функции', 140);
 PHOTOS();
