@@ -50,8 +50,11 @@ const createPhotoData = (id) => ({
   comments: createComment(id)
 });
 
-const EMPTY_PHOTOS = Array.from({length: COUNT_PHOTO});
-const PHOTO = EMPTY_PHOTOS.map((value, index) => value = createPhotoData(index + 1));
+const photos = [];
+for(let i = 0; i < COUNT_PHOTO; i++) {
+  photos.push(createPhotoData(i + 1));
+}
 
 checkStringLength('Вызов функции', 140);
-PHOTOS();
+photos();
+
