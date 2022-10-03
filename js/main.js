@@ -36,6 +36,10 @@ const getRandomPositiveInteger = (a, b) => {
 
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
+const createPhotoArray = (lengthArray) => Array.from({length: lengthArray}).map((value, index) => createPhotoData(index + 1));
+
+
+
 const createComment = (id) => ({
   id,
   avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
@@ -51,8 +55,8 @@ const createPhotoData = (id) => ({
   comments: Array.from({length: getRandomPositiveInteger(1, COUNT_COMMENT)}).map((value, index) => createComment(index + 1))
 });
 
-const photos = Array.from({length: COUNT_PHOTO}).map((value, index) => createPhotoData(index + 1));
+const photos = createPhotoArray(COUNT_PHOTO);
 
 checkStringLength('Вызов функции', 140);
-photos();
+console.log(photos[6].comments[1]);
 
