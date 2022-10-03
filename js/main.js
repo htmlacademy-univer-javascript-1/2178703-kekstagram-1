@@ -19,6 +19,7 @@ const DESCRIPTIONS = [
 ];
 
 const COUNT_PHOTO = 25;
+const COUNT_COMMENT = 8;
 
 const CountLike = {
   MIN: 15,
@@ -47,13 +48,10 @@ const createPhotoData = (id) => ({
   url: `photos/${id}.jpg`,
   description: DESCRIPTIONS[getRandomPositiveInteger(0, DESCRIPTIONS.length - 1)],
   likes: getRandomPositiveInteger(CountLike.MIN, CountLike.MAX),
-  comments: createComment(id)
+  comments: Array.from({length: getRandomPositiveInteger(1, COUNT_COMMENT)}).map((value, index) => createComment(index + 1))
 });
 
-const photos = [];
-for(let i = 0; i < COUNT_PHOTO; i++) {
-  photos.push(createPhotoData(i + 1));
-}
+const photos = Array.from({length: COUNT_PHOTO}).map((value, index) => createPhotoData(index + 1));
 
 checkStringLength('Вызов функции', 140);
 photos();
