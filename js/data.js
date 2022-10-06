@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger } from "./util.js";
+import { getRandomPositiveInteger } from './util.js';
 
 const NAMES = ['Александр', 'Кристина', 'Анна', 'Дмитрий', 'Дарья', 'Елизавета', 'Максим'];
 

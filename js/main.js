@@ -1,4 +1,4 @@
-import { photos } from "./data.js";
+import { photos } from './data.js';
 
 photos();
 

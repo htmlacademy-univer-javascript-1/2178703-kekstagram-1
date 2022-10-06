@@ -7,5 +7,6 @@ const getRandomPositiveInteger = (a, b) => {
 };
 
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
+checkStringLength('Вызов функции, 140');
 
 export {getRandomPositiveInteger};
