@@ -1,3 +1,4 @@
-import { containerPictures } from './renderingPhotos.js';
+import { renderThumbnails } from './thumbnail.js';
+import { photos } from './mocks.js';
 
-containerPictures();
+renderThumbnails(photos);
