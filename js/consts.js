@@ -1,5 +1,3 @@
-import { getRandomPositiveInteger } from './util.js';
-
 const NAMES = ['Александр', 'Кристина', 'Анна', 'Дмитрий', 'Дарья', 'Елизавета', 'Максим'];
 
 const MESSAGES = [
@@ -28,23 +26,9 @@ const CountLike = {
   MAX: 200
 };
 
-const createComment = (id) => ({
-  id,
-  avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
-  message: MESSAGES[getRandomPositiveInteger(0, MESSAGES.length - 1)],
-  name: NAMES[getRandomPositiveInteger(0, NAMES.length - 1)]
-});
+const NumberAvatar = {
+  MIN: 1,
+  MAX: 6
+};
 
-const createPhotoData = (id) => ({
-  id,
-  url: `photos/${id}.jpg`,
-  description: DESCRIPTIONS[getRandomPositiveInteger(0, DESCRIPTIONS.length - 1)],
-  likes: getRandomPositiveInteger(CountLike.MIN, CountLike.MAX),
-  comments: Array.from({length: getRandomPositiveInteger(1, COUNT_COMMENT)}).map((value, index) => createComment(index + 1))
-});
-
-const createPhotoArray = (lengthArray) => Array.from({length: lengthArray}).map((value, index) => createPhotoData(index + 1));
-
-const photos = createPhotoArray(COUNT_PHOTO);
-
-export {photos};
+export {NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar};

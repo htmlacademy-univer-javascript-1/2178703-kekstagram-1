@@ -1,5 +1,3 @@
-import { photos } from './data.js';
+import { containerPictures } from './renderingPhotos.js';
 
-photos();
-
-
+containerPictures();
