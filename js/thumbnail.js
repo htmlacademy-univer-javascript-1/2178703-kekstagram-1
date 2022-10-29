@@ -31,5 +31,4 @@ const addPictures = () => {
   });
 };
 
-
 export { addPictures };
