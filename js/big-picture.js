@@ -22,21 +22,31 @@ const getCommentsList = (comments) => {
 };
 
 const renderBigPicture = (picture) => {
-    bigPicture.querySelector('.social__comment-count').classList.add('hidden');
-    bigPicture.querySelector('.comments-loader').classList.add('hidden');
+  bigPicture.querySelector('.social__comment-count').classList.add('hidden');
+  bigPicture.querySelector('.comments-loader').classList.add('hidden');
 
-    bigPicture.querySelector('.big-picture__img img').src = picture.url;
-    bigPicture.querySelector('.likes-count').textContent = picture.likes;
-    bigPicture.querySelector('.comments-count').textContent = picture.comments.length;
-    bigPicture.querySelector('.social__caption').textContent = picture.description;
+  bigPicture.querySelector('.big-picture__img img').src = picture.url;
+  bigPicture.querySelector('.likes-count').textContent = picture.likes;
+  bigPicture.querySelector('.comments-count').textContent = picture.comments.length;
+  bigPicture.querySelector('.social__caption').textContent = picture.description;
 
-    getCommentsList(picture.comments);
+  getCommentsList(picture.comments);
 };
 
 const onPictureEscKeyDown = (evt) => {
   if(evt.key === 'Escape') {
-    closePicture();
+    document.body.classList.remove('modal-open');
+    bigPicture.classList.add('hidden');
+    document.removeEventListener('keydown', onPictureEscKeyDown);
   }
+};
+
+const closePicture = () => {
+  document.body.classList.remove('modal-open');
+  bigPicture.classList.add('hidden');
+
+  closeButton.removeEventListener('click', closePicture);
+  document.removeEventListener('keydown', onPictureEscKeyDown);
 };
 
 const openPicture = (element) => {
@@ -47,14 +57,6 @@ const openPicture = (element) => {
 
   closeButton.addEventListener('click', closePicture);
   document.addEventListener('keydown', onPictureEscKeyDown);
-};
-
-const closePicture = () => {
-  document.body.classList.remove('modal-open');
-  bigPicture.classList.add('hidden');
-
-  closeButton.removeEventListener('click', closePicture);
-  document.removeEventListener('keydown', onPictureEscKeyDown);
 };
 
 export {openPicture};
