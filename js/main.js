@@ -1,4 +1,4 @@
-import { renderThumbnails } from './thumbnail.js';
-import { photos } from './mocks.js';
+import { addPictures } from './thumbnail.js';
 
-renderThumbnails(photos);
+
+addPictures();
