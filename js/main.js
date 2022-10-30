@@ -1,3 +1,3 @@
-import { containerPictures } from './renderingPhotos.js';
+import { addPictures } from './thumbnail.js';
 
-containerPictures();
+addPictures();
