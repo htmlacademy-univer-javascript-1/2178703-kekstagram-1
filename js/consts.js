@@ -23,8 +23,6 @@ const COUNT_COMMENT = 8;
 const MAX_STRING_LENGTH = 140;
 const MAX_COUNT_HASHTAGS = 5;
 
-
-
 const CountLike = {
   MIN: 15,
   MAX: 200

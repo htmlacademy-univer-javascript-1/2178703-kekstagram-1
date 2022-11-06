@@ -15,7 +15,6 @@ const onPopupEscKeydown = (evt) => {
     editImg.classList.add('hidden');
     document.body.classList.remove('modal-open');
     document.removeEventListener('keydown', onPopupEscKeydown);
-    document.removeEventListener('click', closeUploadPopup);
     form.reset();
   }
 };
@@ -26,7 +25,7 @@ const closeUploadPopup  = () => {
   document.removeEventListener('keydown', onPopupEscKeydown);
   document.removeEventListener('click', closeUploadPopup);
   form.reset();
-}
+};
 
 const onFocusBlurEscKeydown = (field) => {
   field.addEventListener('focus', () => {
