@@ -34,8 +34,8 @@ const renderBigPicture = (picture) => {
   getCommentsList(picture.comments);
 };
 
-const onPictureEscKeyDown = () => {
-  if(isEscapeKey) {
+const onPictureEscKeyDown = (evt) => {
+  if(isEscapeKey(evt)) {
     document.body.classList.remove('modal-open');
     bigPicture.classList.add('hidden');
     document.removeEventListener('keydown', onPictureEscKeyDown);
