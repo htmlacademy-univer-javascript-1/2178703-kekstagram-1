@@ -27,7 +27,7 @@ const closeUploadPopup  = () => {
   form.reset();
 };
 
-const onFocusBlurEscKeydown = (field) => {
+const addFieldListeners = (field) => {
   field.addEventListener('focus', () => {
     document.removeEventListener('keydown', onPopupEscKeydown);
   });
@@ -41,11 +41,11 @@ const showUploadPopup = () => {
   document.body.classList.add('modal-open');
   closeButton.addEventListener('click', closeUploadPopup);
   document.addEventListener('keydown',onPopupEscKeydown);
-  onFocusBlurEscKeydown(commentsField);
-  onFocusBlurEscKeydown(hashtagsField);
+  addFieldListeners(commentsField);
+  addFieldListeners(hashtagsField);
 };
 
-const validateCommentLength = (value) => checkStringLength(value,  MAX_STRING_LENGTH);
+const validateCommentLength = (string) => checkStringLength(string,  MAX_STRING_LENGTH);
 
 const getHashtags = (string) => string.split(' ').filter((item) => item !== '');
 
@@ -55,7 +55,7 @@ const getUniqueHashtags = (string) => {
   return hashtags.length === uniqueSet.size;
 };
 
-const checkQuantity = (string) => getHashtags(string).length <= MAX_COUNT_HASHTAGS;
+const checkQuantity = (string) => checkStringLength(getHashtags(string), MAX_COUNT_HASHTAGS);
 
 const getHashtagsToLowerCase = (string) => {
   const hashtags = getHashtags(string);
