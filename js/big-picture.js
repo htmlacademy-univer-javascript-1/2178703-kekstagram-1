@@ -1,3 +1,5 @@
+import { isEscapeKey } from './utils.js';
+
 const bigPicture = document.querySelector('.big-picture');
 const closeButton = document.querySelector('.big-picture__cancel');
 
@@ -32,8 +34,8 @@ const renderBigPicture = (picture) => {
   getCommentsList(picture.comments);
 };
 
-const onPictureEscKeyDown = (evt) => {
-  if(evt.key === 'Escape') {
+const onPictureEscKeyDown = () => {
+  if(isEscapeKey) {
     document.body.classList.remove('modal-open');
     bigPicture.classList.add('hidden');
     document.removeEventListener('keydown', onPictureEscKeyDown);

@@ -20,6 +20,10 @@ const DESCRIPTIONS = [
 
 const COUNT_PHOTO = 25;
 const COUNT_COMMENT = 8;
+const MAX_STRING_LENGTH = 140;
+const MAX_COUNT_HASHTAGS = 5;
+
+
 
 const CountLike = {
   MIN: 15,
@@ -31,4 +35,4 @@ const NumberAvatar = {
   MAX: 6
 };
 
-export {NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar};
+export { NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar, MAX_STRING_LENGTH, MAX_COUNT_HASHTAGS };
