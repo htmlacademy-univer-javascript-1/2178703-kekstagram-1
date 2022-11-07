@@ -134,7 +134,6 @@ const commentHandler = (string) => {
     error: `Максимальная длина комментария ${MAX_STRING_LENGTH} символов`,
   };
 
-
   const isInvalid = rule.check;
   if(isInvalid) {
     errorMessage = rule.error;
@@ -146,7 +145,6 @@ const validateForm = () => {
   pristine.addValidator(hashtagsField, hashtagsHandler, error);
   pristine.addValidator(commentsField, commentHandler, error);
 };
-
 
 const renderUploadForm = () => {
   imgUploadField.addEventListener('change', showUploadPopup);
