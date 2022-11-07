@@ -130,9 +130,9 @@ const commentHandler = (string) => {
   }
 
   const rule = {
-      check: !checkStringLength(inputText, MAX_STRING_LENGTH),
-      error: `Максимальная длина комментария ${MAX_STRING_LENGTH} символов`,
-    };
+    check: !checkStringLength(inputText, MAX_STRING_LENGTH),
+    error: `Максимальная длина комментария ${MAX_STRING_LENGTH} символов`,
+  };
 
 
   const isInvalid = rule.check;
