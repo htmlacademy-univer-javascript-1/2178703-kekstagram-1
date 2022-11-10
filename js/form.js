@@ -45,7 +45,7 @@ const addFieldListeners = (field) => {
 };
 
 const buttonAdjustment = () => {
-  submitButton.disabled = !pristine.validate()
+  submitButton.disabled = !pristine.validate();
 };
 
 const onUploadPopupShow = () => {
