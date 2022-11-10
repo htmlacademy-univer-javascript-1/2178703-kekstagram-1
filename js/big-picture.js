@@ -1,5 +1,6 @@
 import { isEscapeKey } from './utils.js';
 
+const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
 const closeButton = document.querySelector('.big-picture__cancel');
 
@@ -35,22 +36,19 @@ const renderBigPicture = (picture) => {
 };
 
 const closePicture = () => {
-  document.body.classList.remove('modal-open');
+  body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
 };
 
 const onPictureEscKeyDown = (evt) => {
   if(isEscapeKey(evt)) {
-    document.body.classList.remove('modal-open');
-    bigPicture.classList.add('hidden');
+    closePicture();
     document.removeEventListener('keydown', onPictureEscKeyDown);
   }
 };
 
 const onPictureClose = () => {
-  document.body.classList.remove('modal-open');
-  bigPicture.classList.add('hidden');
-
+  closePicture();
   document.removeEventListener('keydown', onPictureEscKeyDown);
 };
 

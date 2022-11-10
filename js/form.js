@@ -44,7 +44,9 @@ const addFieldListeners = (field) => {
   });
 };
 
-const buttonAdjustment = () => submitButton.disabled = !pristine.validate();
+const buttonAdjustment = () => {
+  submitButton.disabled = !pristine.validate()
+};
 
 const onUploadPopupShow = () => {
   editImg.classList.remove('hidden');
