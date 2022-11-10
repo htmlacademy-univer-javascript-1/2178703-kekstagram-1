@@ -48,7 +48,7 @@ const buttonAdjustment = () => {
   submitButton.disabled = !pristine.validate();
 };
 
-const onimgUploadFieldchange = () => {
+const onImgUploadFieldchange = () => {
   editImg.classList.remove('hidden');
   body.classList.add('modal-open');
   closeButton.addEventListener('click', onCloseButtonClick);
@@ -155,7 +155,7 @@ const onHashtagInput = () => buttonAdjustment();
 const onCommentInput = () => buttonAdjustment();
 
 const renderUploadForm = () => {
-  imgUploadField.addEventListener('change', onimgUploadFieldchange);
+  imgUploadField.addEventListener('change', onImgUploadFieldchange);
   hashtagsField.addEventListener('input', onHashtagInput);
   commentsField.addEventListener('input', onCommentInput);
   validateForm();
