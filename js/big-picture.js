@@ -34,6 +34,11 @@ const renderBigPicture = (picture) => {
   getCommentsList(picture.comments);
 };
 
+const closePicture = () => {
+  document.body.classList.remove('modal-open');
+  bigPicture.classList.add('hidden');
+};
+
 const onPictureEscKeyDown = (evt) => {
   if(isEscapeKey(evt)) {
     document.body.classList.remove('modal-open');
@@ -42,11 +47,10 @@ const onPictureEscKeyDown = (evt) => {
   }
 };
 
-const closePicture = () => {
+const onPictureClose = () => {
   document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
 
-  closeButton.removeEventListener('click', closePicture);
   document.removeEventListener('keydown', onPictureEscKeyDown);
 };
 
@@ -56,8 +60,8 @@ const openPicture = (element) => {
 
   renderBigPicture(element);
 
-  closeButton.addEventListener('click', closePicture);
+  closeButton.addEventListener('click', onPictureClose);
   document.addEventListener('keydown', onPictureEscKeyDown);
 };
 
-export {openPicture};
+export { openPicture };

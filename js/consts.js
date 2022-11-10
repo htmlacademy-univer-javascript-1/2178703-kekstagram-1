@@ -23,6 +23,17 @@ const COUNT_COMMENT = 8;
 const MAX_STRING_LENGTH = 140;
 const MAX_HASHTAG_COUNT = 5;
 const MAX_HASHTAG_LENGTH = 20;
+
+const ErrorMessage = {
+  SEPARETED_BY_SPASES: 'Хэш-теги должны разделяться пробелами',
+  START_WITH: 'Хэш-тег должен начинаться с символа #',
+  NO_REPEAT: 'Хэш-теги не должны повторяться',
+  HASHTAG_MAX_LENTH: `Максимальная длина одного хэш-тега ${MAX_HASHTAG_LENGTH} символов, включая #`,
+  MAX_COUNT_HASHTAG: `Нельзя указать больше ${MAX_HASHTAG_COUNT} хэш-тегов`,
+  UNACCEPTABLE_SYMBOLS: 'Хэш-тег содержит недопустимые символы',
+  COMMENT_MAX_LENGTH: `Максимальная длина комментария ${MAX_STRING_LENGTH} символов`
+};
+
 const CountLike = {
   MIN: 15,
   MAX: 200
@@ -33,4 +44,4 @@ const NumberAvatar = {
   MAX: 6
 };
 
-export { NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar, MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH };
+export { NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar, MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage };

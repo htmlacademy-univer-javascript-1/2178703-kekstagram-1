@@ -1,7 +1,8 @@
 import { isEscapeKey, checkStringLength } from './utils.js';
-import { MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH } from './consts.js';
+import { MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage } from './consts.js';
 
 const body = document.querySelector('body');
+const submitButton = document.querySelector('.img-upload__submit');
 const imgUploadField = document.querySelector('#upload-file');
 const editImg = document.querySelector('.img-upload__overlay');
 const form = document.querySelector('.img-upload__form');
@@ -11,48 +12,48 @@ const commentsField = form.querySelector('.text__description');
 
 
 const pristine = new Pristine(form, {
-  classTo: 'text',
-  errorClass: 'text--invalid',
-  successClass: 'text-valid',
-  errorTextParent: 'text',
-  errorTextTag: 'div',
-  errorTextClass: 'text__error'
+  classTo: 'img-upload__field-wrapper',
+  errorTextParent: 'img-upload__field-wrapper',
+  errorTextClass: 'img-upload__error-text'
 });
-
-const onPopupEscKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    editImg.classList.add('hidden');
-    body.classList.remove('modal-open');
-    document.removeEventListener('keydown', onPopupEscKeydown);
-    form.reset();
-  }
-};
 
 const closeUploadPopup  = () => {
   editImg.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onPopupEscKeydown);
-  document.removeEventListener('click', closeUploadPopup);
   form.reset();
+};
+
+const onButtonEscKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    closeUploadPopup();
+    document.removeEventListener('keydown', onButtonEscKeydown);
+  }
+};
+
+const onCloseButtonClick = () => {
+  closeUploadPopup();
+  document.removeEventListener('keydown', onButtonEscKeydown);
 };
 
 const addFieldListeners = (field) => {
   field.addEventListener('focus', () => {
-    document.removeEventListener('keydown', onPopupEscKeydown);
+    document.removeEventListener('keydown', onButtonEscKeydown);
   });
   field.addEventListener('blur', () => {
-    document.addEventListener('keydown', onPopupEscKeydown);
+    document.addEventListener('keydown', onButtonEscKeydown);
   });
 };
 
-const showUploadPopup = () => {
+const buttonAdjustment = () => submitButton.disabled = !pristine.validate();
+
+const onUploadPopupShow = () => {
   editImg.classList.remove('hidden');
   body.classList.add('modal-open');
-  closeButton.addEventListener('click', closeUploadPopup);
-  document.addEventListener('keydown',onPopupEscKeydown);
+  closeButton.addEventListener('click', onCloseButtonClick);
+  document.addEventListener('keydown',onButtonEscKeydown);
   addFieldListeners(commentsField);
   addFieldListeners(hashtagsField);
+  buttonAdjustment();
 };
 
 const getUniqueHashtags = (hashtags) => {
@@ -82,32 +83,32 @@ const hashtagsHandler = (string) => {
   const rules = [
     {
       check: inputHashtags.some((item) => item.indexOf('#', 1) >= 1),
-      error: 'Хэш-теги должны разделяться пробелами',
+      error: ErrorMessage.SEPARETED_BY_SPASES,
     },
 
     {
       check: inputHashtags.length > MAX_HASHTAG_COUNT,
-      error: `Нельзя указать больше ${MAX_HASHTAG_COUNT} хэш-тегов`,
+      error: ErrorMessage.MAX_COUNT_HASHTAG,
     },
 
     {
       check: inputHashtags.some((item) => item[0] !== '#'),
-      error: 'Хэш-тег должен начинаться с символа #',
+      error: ErrorMessage.START_WITH,
     },
 
     {
       check: inputHashtags.some((item) => item.length > MAX_HASHTAG_LENGTH),
-      error: `Максимальная длина одного хэш-тега ${MAX_HASHTAG_LENGTH} символов, включая #`,
+      error: ErrorMessage.HASHTAG_MAX_LENTH,
     },
 
     {
       check: inputHashtags.some((item) => !/^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/.test(item)),
-      error: 'Хэш-тег должен содержать только буквы и цифры',
+      error: ErrorMessage.UNACCEPTABLE_SYMBOLS,
     },
 
     {
       check: !getUniqueHashtags(inputHashtags),
-      error: 'Хэш-теги не должны повторяться',
+      error: ErrorMessage.NO_REPEAT,
     },
   ];
 
@@ -131,7 +132,7 @@ const commentHandler = (string) => {
 
   const rule = {
     check: !checkStringLength(inputText, MAX_STRING_LENGTH),
-    error: `Максимальная длина комментария ${MAX_STRING_LENGTH} символов`,
+    error: ErrorMessage.COMMENT_MAX_LENGTH,
   };
 
   const isInvalid = rule.check;
@@ -144,16 +145,18 @@ const commentHandler = (string) => {
 const validateForm = () => {
   pristine.addValidator(hashtagsField, hashtagsHandler, error);
   pristine.addValidator(commentsField, commentHandler, error);
+  buttonAdjustment();
 };
+
+const onHashtagInput = () => buttonAdjustment();
+
+const onCommentInput = () => buttonAdjustment();
 
 const renderUploadForm = () => {
-  imgUploadField.addEventListener('change', showUploadPopup);
+  imgUploadField.addEventListener('change', onUploadPopupShow);
+  hashtagsField.addEventListener('input', onHashtagInput);
+  commentsField.addEventListener('input', onCommentInput);
   validateForm();
-  form.addEventListener('submit', (evt) => {
-    if (!pristine.validate()) {
-      evt.preventDefault();
-    }
-  });
 };
 
-export {renderUploadForm};
+export { renderUploadForm };
