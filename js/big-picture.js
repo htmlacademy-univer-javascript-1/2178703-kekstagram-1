@@ -40,16 +40,16 @@ const closePicture = () => {
   bigPicture.classList.add('hidden');
 };
 
-const onPictureEscKeyDown = (evt) => {
+const onDocumentEscKeyDown = (evt) => {
   if(isEscapeKey(evt)) {
     closePicture();
-    document.removeEventListener('keydown', onPictureEscKeyDown);
+    document.removeEventListener('keydown', onDocumentEscKeyDown);
   }
 };
 
-const onPictureClose = () => {
+const onCloseButtonClick = () => {
   closePicture();
-  document.removeEventListener('keydown', onPictureEscKeyDown);
+  document.removeEventListener('keydown', onDocumentEscKeyDown);
 };
 
 const openPicture = (element) => {
@@ -58,8 +58,8 @@ const openPicture = (element) => {
 
   renderBigPicture(element);
 
-  closeButton.addEventListener('click', onPictureClose);
-  document.addEventListener('keydown', onPictureEscKeyDown);
+  closeButton.addEventListener('click', onCloseButtonClick);
+  document.addEventListener('keydown', onDocumentEscKeyDown);
 };
 
 export { openPicture };
