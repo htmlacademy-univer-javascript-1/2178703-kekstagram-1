@@ -31,7 +31,7 @@ const renderComments = () => {
   commentsList.insertAdjacentHTML('afterbegin', commentsTemplate);
 
   if (countRenderedComments >= actualComments.length) {
-    commentsLoader.removeEventListener('click', onCommentsLoaderButtomClick);
+    commentsLoader.removeEventListener('click', onCommentsLoaderButtonClick);
     commentsLoader.classList.add('hidden');
   }
 };
@@ -47,7 +47,7 @@ const initComments = (comments) => {
   }
 
   renderComments();
-  commentsLoader.addEventListener('click', onCommentsLoaderButtomClick);
+  commentsLoader.addEventListener('click', onCommentsLoaderButtonClick);
 };
 
 const renderBigPicture = (picture) => {
@@ -64,7 +64,7 @@ const closePicture = () => {
   closeButton.removeEventListener('click', onCloseButtonClick);
   document.removeEventListener('keydown', onDocumentEscKeyDown);
   commentsLoader.classList.remove('hidden');
-  commentsLoader.removeEventListener('click', onCommentsLoaderButtomClick);
+  commentsLoader.removeEventListener('click', onCommentsLoaderButtonClick);
   countRenderedComments = SHOWN_COMMENT_COUNT;
 };
 
@@ -78,7 +78,7 @@ function onCloseButtonClick() {
   closePicture();
 }
 
-function onCommentsLoaderButtomClick() {
+function onCommentsLoaderButtonClick() {
   countRenderedComments += SHOWN_COMMENT_COUNT;
   renderComments();
 }
