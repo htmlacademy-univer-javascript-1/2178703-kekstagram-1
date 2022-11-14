@@ -19,10 +19,11 @@ const DESCRIPTIONS = [
 ];
 
 const COUNT_PHOTO = 25;
-const COUNT_COMMENT = 8;
+const COUNT_COMMENT = 25;
 const MAX_STRING_LENGTH = 140;
 const MAX_HASHTAG_COUNT = 5;
 const MAX_HASHTAG_LENGTH = 20;
+const SHOWN_COMMENT_COUNT = 5;
 
 const ErrorMessage = {
   SEPARETED_BY_SPASES: 'Хэш-теги должны разделяться пробелами',
@@ -44,4 +45,5 @@ const NumberAvatar = {
   MAX: 6
 };
 
-export { NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar, MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage };
+export { NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar,
+   MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage, SHOWN_COMMENT_COUNT };
