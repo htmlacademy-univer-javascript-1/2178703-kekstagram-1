@@ -72,11 +72,11 @@ function onDocumentEscKeyDown(evt) {
   if(isEscapeKey(evt)) {
     closePicture();
   }
-};
+}
 
 function onCloseButtonClick() {
   closePicture();
-};
+}
 
 function onBigPictureCommentsLoaderBtnClick() {
   countRenderedComments += SHOWN_COMMENT_COUNT;
