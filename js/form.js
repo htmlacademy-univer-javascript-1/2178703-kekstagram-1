@@ -36,11 +36,11 @@ function onButtonEscKeydown(evt) {
   if (isEscapeKey(evt)) {
     closeUploadPopup();
   }
-};
+}
 
 function onCloseButtonClick() {
   closeUploadPopup();
-};
+}
 
 const addFieldListeners = (field) => {
   field.addEventListener('focus', () => {

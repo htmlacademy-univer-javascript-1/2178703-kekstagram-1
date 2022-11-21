@@ -40,4 +40,4 @@ const onScaleButtonClick = (evt) => {
   imgPreview.style.transform = `scale(${scaleCount / 100})`;
 };
 
-export { onScaleButtonClick, scaleContainer }
+export { onScaleButtonClick, scaleContainer };

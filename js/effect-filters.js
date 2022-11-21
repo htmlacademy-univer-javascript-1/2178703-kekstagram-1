@@ -109,4 +109,4 @@ const onFilterButtonChange = (evt) => {
   }
 };
 
-export { onFilterButtonChange, initEffects, effectList, sliderWrapper }
+export { onFilterButtonChange, initEffects, effectList, sliderWrapper };
