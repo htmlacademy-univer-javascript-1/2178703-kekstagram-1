@@ -14,7 +14,7 @@ const onScaleButtonClick = (evt) => {
   let scaleCount = PercentageScale.MAX;
   const buttonScale = evt.target;
 
-  if (buttonScale.classList.contains('scale__control--value')) {
+  if (buttonScale.tagName !== 'BUTTON') {
     return;
   }
 
@@ -23,7 +23,7 @@ const onScaleButtonClick = (evt) => {
     scaleValue.value = `${scaleCount}%`;
   }
 
-  if (buttonScale.classList.contains('scale__control--smaller')) {
+  else {
     scaleCount = Math.max(scaleInput - PercentageScale.STEP, PercentageScale.MIN);
     scaleValue.value = `${scaleCount}%`;
   }
