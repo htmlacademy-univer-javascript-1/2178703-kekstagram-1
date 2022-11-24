@@ -14,29 +14,20 @@ const onScaleButtonClick = (evt) => {
   let scaleCount = PercentageScale.MAX;
   const buttonScale = evt.target;
 
-  if (buttonScale.matches('.scale__control--value')) {
+  if (buttonScale.classList.contains('scale__control--value')) {
     return;
   }
 
-  if (buttonScale.matches('.scale__control--bigger')) {
-    scaleCount =  scaleInput + PercentageScale.STEP;
+  if (buttonScale.classList.contains('scale__control--bigger')) {
+    scaleCount =  Math.min(scaleInput + PercentageScale.STEP, PercentageScale.MAX);
     scaleValue.value = `${scaleCount}%`;
   }
 
-  if (buttonScale.matches('.scale__control--smaller')) {
-    scaleCount = scaleInput - PercentageScale.STEP;
+  if (buttonScale.classList.contains('scale__control--smaller')) {
+    scaleCount = Math.max(scaleInput - PercentageScale.STEP, PercentageScale.MIN);
     scaleValue.value = `${scaleCount}%`;
   }
 
-  if (scaleCount >= PercentageScale.MAX) {
-    scaleCount = PercentageScale.MAX;
-    scaleValue.value = `${scaleCount}%`;
-  }
-
-  if (scaleCount <= PercentageScale.MIN) {
-    scaleCount = PercentageScale.MIN;
-    scaleValue.value = `${scaleCount}%`;
-  }
   imgPreview.style.transform = `scale(${scaleCount / 100})`;
 };
 
