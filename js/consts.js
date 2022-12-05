@@ -24,9 +24,10 @@ const MAX_STRING_LENGTH = 140;
 const MAX_HASHTAG_COUNT = 5;
 const MAX_HASHTAG_LENGTH = 20;
 const SHOWN_COMMENT_COUNT = 5;
+const ALERT_SHOW_TIME = 5000;
 
 const ErrorMessage = {
-  SEPARETED_BY_SPASES: 'Хэш-теги должны разделяться пробелами',
+  SEPARATED_BY_SPACES: 'Хэш-теги должны разделяться пробелами',
   START_WITH: 'Хэш-тег должен начинаться с символа #',
   NO_REPEAT: 'Хэш-теги не должны повторяться',
   HASHTAG_MAX_LENTH: `Максимальная длина одного хэш-тега ${MAX_HASHTAG_LENGTH} символов, включая #`,
@@ -46,4 +47,4 @@ const NumberAvatar = {
 };
 
 export { NAMES, MESSAGES, DESCRIPTIONS, COUNT_PHOTO, COUNT_COMMENT, CountLike, NumberAvatar,
-  MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage, SHOWN_COMMENT_COUNT };
+  MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage, SHOWN_COMMENT_COUNT, ALERT_SHOW_TIME };
