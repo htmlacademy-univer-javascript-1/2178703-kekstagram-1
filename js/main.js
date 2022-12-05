@@ -10,8 +10,3 @@ getData(
 );
 
 renderUploadForm();
-
-
-
-
-

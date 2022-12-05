@@ -43,4 +43,4 @@ function removeMessage() {
   message.remove();
 }
 
-export { renderMessage }
+export { renderMessage };

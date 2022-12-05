@@ -26,7 +26,7 @@ const showAlert = (message, alertShowTime) => {
   document.body.append(alertContainer);
 
   setTimeout(() => alertContainer.remove(), alertShowTime);
-}
+};
 
 export { getRandomPositiveInteger, isEscapeKey, checkStringLength, showAlert };
 
