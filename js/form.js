@@ -66,12 +66,7 @@ const onImgUploadFieldСhange = () => {
   body.classList.add('modal-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onButtonEscKeydown);
-  if (imgPreview.hasAttribute('class')) {
-    sliderWrapper.classList.remove('hidden');
-  } else {
-    sliderWrapper.classList.add('hidden');
-  }
-
+  imgPreview.hasAttribute('class') ? sliderWrapper.classList.remove('hidden') : sliderWrapper.classList.add('hidden');
   scaleContainer.addEventListener('click', onScaleButtonClick);
   effectList.addEventListener('change', onFilterButtonChange);
   addFieldListeners(commentsField);

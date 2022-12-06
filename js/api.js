@@ -1,17 +1,22 @@
+const Urls = {
+  'GET': 'https://26.javascript.pages.academy/kekstagram/data',
+  'POST': 'https://26.javascript.pages.academy/kekstagram'
+};
+
 const getData = (onSuccess, onFail) => {
-  fetch('https://26.javascript.pages.academy/kekstagram/data')
+  fetch(Urls.GET)
     .then((responce) => responce.json())
     .then((photos) => {
       onSuccess(photos);
     })
     .catch(() => {
-      onFail('Не удалось загрузить фотографии, обновите страницу');
+      onFail();
     });
 };
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    'https://26.javascript.pages.academy/kekstagram',
+    Urls.POST,
     {
       method: 'POST',
       body,
@@ -21,11 +26,11 @@ const sendData = (onSuccess, onFail, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onFail('Не удалось отправить форму. Попробуйте ещё раз');
+        onFail();
       }
     })
     .catch(() => {
-      onFail('Не удалось отправить форму. Попробуйте ещё раз');
+      onFail();
     });
 };
 

@@ -22,7 +22,8 @@ const addPictures = (data) => {
       const target = evt.target;
       const parent = target.closest('.js-picture');
       const id = +parent.dataset.id;
-      openPicture(data[id]);
+      const [ photo ] = data.filter((item) => item.id === id);
+      openPicture(photo);
     });
   });
 };
