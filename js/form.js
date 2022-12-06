@@ -61,11 +61,9 @@ const buttonAdjustment = () => {
   submitButton.disabled = !pristine.validate();
 };
 
-const doActionWithClassHidden = () => {
-  return imgPreview.hasAttribute('class') ?
-  sliderWrapper.classList.remove('hidden') :
-  sliderWrapper.classList.add('hidden');
-};
+const doActionWithClassHidden = () => imgPreview.hasAttribute('class') ? sliderWrapper.classList.remove('hidden') : sliderWrapper.classList.add('hidden');
+
+
 
 const onImgUploadFieldСhange = () => {
   editImg.classList.remove('hidden');
