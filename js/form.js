@@ -62,7 +62,9 @@ const buttonAdjustment = () => {
 };
 
 const doActionWithClassHidden = () => {
-  imgPreview.hasAttribute('class') ? sliderWrapper.classList.remove('hidden') : sliderWrapper.classList.add('hidden');
+  return imgPreview.hasAttribute('class') ?
+  sliderWrapper.classList.remove('hidden') :
+  sliderWrapper.classList.add('hidden');
 };
 
 const onImgUploadFieldСhange = () => {
