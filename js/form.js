@@ -63,8 +63,6 @@ const buttonAdjustment = () => {
 
 const doActionWithClassHidden = () => imgPreview.hasAttribute('class') ? sliderWrapper.classList.remove('hidden') : sliderWrapper.classList.add('hidden');
 
-
-
 const onImgUploadFieldСhange = () => {
   editImg.classList.remove('hidden');
   body.classList.add('modal-open');
