@@ -28,5 +28,30 @@ const showAlert = (message, alertShowTime) => {
   setTimeout(() => alertContainer.remove(), alertShowTime);
 };
 
-export { getRandomPositiveInteger, isEscapeKey, checkStringLength, showAlert };
+const shuffleArray = (arr) => arr.map((a) => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map((a) => a[1]);
+
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+const throttle = (callback, delayBetweenFrames) => {
+  let lastTime = 0;
+
+  return (...rest) => {
+    const now = new Date();
+
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+};
+
+export { getRandomPositiveInteger, isEscapeKey, checkStringLength, showAlert, debounce, throttle, shuffleArray };
 
