@@ -14,15 +14,15 @@ const filtersForm = filtersContainer.querySelector('.img-filters__form');
 
 let photos = [];
 
-const getFilteredPhotos = (id) => {
+const getFilteredPhotos = (filterName) => {
   let filteredPhotos = [];
 
-  switch(id) {
+  switch(filterName) {
     case Filter.RANDOM:
       filteredPhotos = shuffleArray(photos).slice(0, MAX_COUNT_RANDOM_PHOTO);
       break;
     case Filter.DISCUSSED:
-      filteredPhotos = photos.slice().sort((picture1, picture2) => picture2.comments.length - picture1.comments.length);
+      filteredPhotos = photos.slice().sort((pictureA, pictureB) => pictureB.comments.length - pictureA.comments.length);
       break;
     default:
       filteredPhotos = photos.slice();
@@ -31,9 +31,9 @@ const getFilteredPhotos = (id) => {
 };
 
 const onFiltersFormClick = (evt) => {
-  const id = evt.target.id;
+  const filterName = evt.target.id;
   removeThumbnails();
-  renderThumbnails(getFilteredPhotos(id));
+  renderThumbnails(getFilteredPhotos(filterName));
   filtersContainer.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
   evt.target.classList.add('img-filters__button--active');
 };

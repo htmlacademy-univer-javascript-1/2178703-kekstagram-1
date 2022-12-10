@@ -1,3 +1,5 @@
+import { TIMEOUT_DELAY } from "./consts.js";
+
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -30,7 +32,7 @@ const showAlert = (message, alertShowTime) => {
 
 const shuffleArray = (arr) => arr.map((a) => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map((a) => a[1]);
 
-const debounce = (callback, timeoutDelay = 500) => {
+const debounce = (callback, timeoutDelay = TIMEOUT_DELAY) => {
   let timeoutId;
 
   return (...rest) => {
