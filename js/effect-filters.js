@@ -5,8 +5,6 @@ const sliderWrapper = document.querySelector('.effect-level');
 const effectValue = document.querySelector('.effect-level__value');
 const effectList = document.querySelector('.effects__list');
 
-
-
 const Effects = {
   none: {
     filter: 'none',
