@@ -4,6 +4,7 @@ import { onFilterButtonChange, effectList, sliderWrapper, initEffects } from './
 import { onScaleButtonClick, scaleContainer } from './photo-scale.js';
 import {sendData} from './api.js';
 import { renderMessage } from './messages.js';
+import { imgPreview } from './user-photo.js';
 
 const body = document.querySelector('body');
 const submitButton = document.querySelector('.img-upload__submit');
@@ -13,7 +14,6 @@ const form = document.querySelector('.img-upload__form');
 const closeButton = form.querySelector('.img-upload__cancel');
 const hashtagsField = form.querySelector('.text__hashtags');
 const commentsField = form.querySelector('.text__description');
-const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 
 
 const pristine = new Pristine(form, {
@@ -175,18 +175,20 @@ const onCommentInput = () => buttonAdjustment();
 const setFormSubmit = (onSuccess, onError) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    submitButton.disabled = true;
-    sendData(
-      () => {
-        onSuccess();
-        renderMessage(true);
-      },
-      () => {
-        onError();
-        renderMessage();
-      },
-      new FormData(evt.target),
-    );
+    if (pristine.validate()) {
+      submitButton.disabled = true;
+      sendData(
+        () => {
+          onSuccess();
+          renderMessage(true);
+        },
+        () => {
+          onError();
+          renderMessage();
+        },
+        new FormData(evt.target),
+      );
+    }
   });
 };
 

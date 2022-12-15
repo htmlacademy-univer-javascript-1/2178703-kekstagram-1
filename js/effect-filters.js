@@ -1,9 +1,10 @@
-import { imgPreview } from './form.js';
+import { imgPreview } from './user-photo.js';
 
 const slider = document.querySelector('.effect-level__slider');
 const sliderWrapper = document.querySelector('.effect-level');
 const effectValue = document.querySelector('.effect-level__value');
 const effectList = document.querySelector('.effects__list');
+
 
 
 const Effects = {
@@ -104,7 +105,7 @@ const initEffects = () => {
 
 const onFilterButtonChange = (evt) => {
   const evtHandler = evt.target.value;
-  if (evtHandler === 'none') {
+  if (evtHandler === Effects.none.filter) {
     sliderWrapper.classList.add('hidden');
     imgPreview.style.filter = Effects[evtHandler].filter;
     imgPreview.removeAttribute('class');
