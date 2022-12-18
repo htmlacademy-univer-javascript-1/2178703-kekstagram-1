@@ -15,7 +15,7 @@ const createThumbnails = () => {
   picturesContainer.insertAdjacentHTML('beforeend', photos.map((photo) => getPictureTemplate(photo)).join(''));
 };
 
-const onPicturesClick = (evt) => {
+const onPicturesContainerClick = (evt) => {
   const target = evt.target;
   const picture = target.closest('.js-picture');
 
@@ -34,7 +34,7 @@ const removeThumbnails = () => {
 const renderThumbnails = (data) => {
   photos = data.slice();
   createThumbnails();
-  picturesContainer.addEventListener('click', onPicturesClick);
+  picturesContainer.addEventListener('click', onPicturesContainerClick);
 };
 
 export { renderThumbnails, removeThumbnails };

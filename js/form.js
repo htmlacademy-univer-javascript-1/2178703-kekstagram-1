@@ -1,8 +1,8 @@
 import { isEscapeKey, checkStringLength } from './utils.js';
 import { MAX_STRING_LENGTH, MAX_HASHTAG_COUNT, MAX_HASHTAG_LENGTH, ErrorMessage } from './consts.js';
-import { onFilterButtonChange, effectList, sliderWrapper, initEffects } from './effect-filters.js';
-import { onScaleButtonClick, scaleContainer } from './photo-scale.js';
-import {sendData} from './api.js';
+import { sliderWrapper, initEffects, removeEffects, createSlider } from './effect-filters.js';
+import { initScaleContainer, removeScaleContainer } from './photo-scale.js';
+import { sendData } from './api.js';
 import { renderMessage } from './messages.js';
 import { imgPreview } from './user-photo.js';
 
@@ -25,8 +25,8 @@ const pristine = new Pristine(form, {
 const closeForm  = () => {
   editImg.classList.add('hidden');
   body.classList.remove('modal-open');
-  scaleContainer.removeEventListener('click', onScaleButtonClick);
-  effectList.removeEventListener('change', onFilterButtonChange);
+  removeScaleContainer();
+  removeEffects();
   document.removeEventListener('keydown', onButtonEscKeydown);
   closeButton.removeEventListener('click', onCloseButtonClick);
 };
@@ -57,7 +57,7 @@ const addFieldListeners = (field) => {
   });
 };
 
-const buttonAdjustment = () => {
+const adjustButton = () => {
   submitButton.disabled = !pristine.validate();
 };
 
@@ -69,11 +69,11 @@ const onImgUploadFieldСhange = () => {
   closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onButtonEscKeydown);
   doActionWithClassHidden();
-  scaleContainer.addEventListener('click', onScaleButtonClick);
-  effectList.addEventListener('change', onFilterButtonChange);
+  initEffects();
+  initScaleContainer();
   addFieldListeners(commentsField);
   addFieldListeners(hashtagsField);
-  buttonAdjustment();
+  adjustButton();
 };
 
 const getUniqueHashtags = (hashtags) => {
@@ -118,7 +118,7 @@ const hashtagsHandler = (string) => {
 
     {
       check: inputHashtags.some((item) => item.length > MAX_HASHTAG_LENGTH),
-      error: ErrorMessage.HASHTAG_MAX_LENTH,
+      error: ErrorMessage.HASHTAG_MAX_LENGTH,
     },
 
     {
@@ -165,12 +165,12 @@ const commentHandler = (string) => {
 const validateForm = () => {
   pristine.addValidator(hashtagsField, hashtagsHandler, error);
   pristine.addValidator(commentsField, commentHandler, error);
-  buttonAdjustment();
+  adjustButton();
 };
 
-const onHashtagInput = () => buttonAdjustment();
+const onHashtagFieldInput = () => adjustButton();
 
-const onCommentInput = () => buttonAdjustment();
+const onCommentFieldInput = () => adjustButton();
 
 const setFormSubmit = (onSuccess, onError) => {
   form.addEventListener('submit', (evt) => {
@@ -194,11 +194,11 @@ const setFormSubmit = (onSuccess, onError) => {
 
 const renderUploadForm = () => {
   imgUploadField.addEventListener('change', onImgUploadFieldСhange);
-  hashtagsField.addEventListener('input', onHashtagInput);
-  commentsField.addEventListener('input', onCommentInput);
-  initEffects();
+  hashtagsField.addEventListener('input', onHashtagFieldInput);
+  commentsField.addEventListener('input', onCommentFieldInput);
+  createSlider();
   validateForm();
   setFormSubmit(closeFormWithDefaultSettings, closeForm);
 };
 
-export { renderUploadForm, imgPreview };
+export { renderUploadForm };

@@ -1,4 +1,4 @@
-import { imgPreview } from './form.js';
+import { imgPreview } from './user-photo.js';
 
 const scaleValue = document.querySelector('.scale__control--value');
 const scaleContainer = document.querySelector('.img-upload__scale');
@@ -9,7 +9,7 @@ const PercentScale = {
   MAX: 100
 };
 
-const onScaleButtonClick = (evt) => {
+const onScaleContainerClick = (evt) => {
   const scaleInput = Number.parseInt(scaleValue.value, 10);
   let scaleCount = PercentScale.MAX;
   const buttonScale = evt.target;
@@ -31,4 +31,12 @@ const onScaleButtonClick = (evt) => {
   imgPreview.style.transform = `scale(${scaleCount / 100})`;
 };
 
-export { onScaleButtonClick, scaleContainer };
+const initScaleContainer = () => {
+  scaleContainer.addEventListener('click', onScaleContainerClick);
+};
+
+const removeScaleContainer = () => {
+  scaleContainer.removeEventListener('click', onScaleContainerClick);
+};
+
+export { initScaleContainer, removeScaleContainer };
