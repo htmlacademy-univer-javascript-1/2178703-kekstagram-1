@@ -28,7 +28,7 @@ const closeForm  = () => {
   removeScaleContainer();
   removeEffects();
   imgUploadField.value = '';
-  document.removeEventListener('keydown', onButtonEscKeydown);
+  document.removeEventListener('keydown', onDocumentEscKeydown);
   closeButton.removeEventListener('click', onCloseButtonClick);
 };
 
@@ -39,7 +39,7 @@ const closeFormWithDefaultSettings  = () => {
   form.reset();
 };
 
-function onButtonEscKeydown(evt) {
+function onDocumentEscKeydown(evt) {
   if (isEscapeKey(evt)) {
     closeFormWithDefaultSettings();
   }
@@ -51,10 +51,10 @@ function onCloseButtonClick() {
 
 const addFieldListeners = (field) => {
   field.addEventListener('focus', () => {
-    document.removeEventListener('keydown', onButtonEscKeydown);
+    document.removeEventListener('keydown', onDocumentEscKeydown);
   });
   field.addEventListener('blur', () => {
-    document.addEventListener('keydown', onButtonEscKeydown);
+    document.addEventListener('keydown', onDocumentEscKeydown);
   });
 };
 
@@ -68,7 +68,7 @@ const onImgUploadFieldСhange = () => {
   editImg.classList.remove('hidden');
   body.classList.add('modal-open');
   closeButton.addEventListener('click', onCloseButtonClick);
-  document.addEventListener('keydown', onButtonEscKeydown);
+  document.addEventListener('keydown', onDocumentEscKeydown);
   doActionWithClassHidden();
   initEffects();
   initScaleContainer();
@@ -169,9 +169,9 @@ const validateForm = () => {
   adjustButton();
 };
 
-const onHashtagFieldInput = () => adjustButton();
+const onHashtagsFieldInput = () => adjustButton();
 
-const onCommentFieldInput = () => adjustButton();
+const onCommentsFieldInput = () => adjustButton();
 
 const setFormSubmit = (onSuccess, onError) => {
   form.addEventListener('submit', (evt) => {
@@ -195,8 +195,8 @@ const setFormSubmit = (onSuccess, onError) => {
 
 const renderUploadForm = () => {
   imgUploadField.addEventListener('change', onImgUploadFieldСhange);
-  hashtagsField.addEventListener('input', onHashtagFieldInput);
-  commentsField.addEventListener('input', onCommentFieldInput);
+  hashtagsField.addEventListener('input', onHashtagsFieldInput);
+  commentsField.addEventListener('input', onCommentsFieldInput);
   createSlider();
   validateForm();
   setFormSubmit(closeFormWithDefaultSettings, closeForm);
