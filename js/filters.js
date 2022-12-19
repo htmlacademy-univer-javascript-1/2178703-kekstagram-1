@@ -1,4 +1,4 @@
-import { renderThumbnails, removeThumbnails } from './thumbnail.js';
+import { renderThumbnails, removeThumbnails } from './thumbnails.js';
 import { shuffleArray, debounce } from './utils.js';
 
 const MAX_COUNT_RANDOM_PHOTO = 10;
