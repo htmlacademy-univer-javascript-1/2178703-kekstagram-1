@@ -83,7 +83,7 @@ const getUniqueHashtags = (hashtags) => {
 
 let errorMessage = '';
 
-const error = () => errorMessage;
+const getError = () => errorMessage;
 
 const hashtagsHandler = (string) => {
   errorMessage = '';
@@ -163,8 +163,8 @@ const commentHandler = (string) => {
 };
 
 const validateForm = () => {
-  pristine.addValidator(hashtagsField, hashtagsHandler, error);
-  pristine.addValidator(commentsField, commentHandler, error);
+  pristine.addValidator(hashtagsField, hashtagsHandler, getError);
+  pristine.addValidator(commentsField, commentHandler, getError);
   adjustButton();
 };
 
