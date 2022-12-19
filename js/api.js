@@ -5,7 +5,7 @@ const Url = {
 
 const getData = (onSuccess, onFail) => {
   fetch(Url.GET)
-    .then((responce) => responce.json())
+    .then((response) => response.json())
     .then((photos) => {
       onSuccess(photos);
     })
