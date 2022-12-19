@@ -1,12 +1,5 @@
 import { TIMEOUT_DELAY, ALERT_SHOW_TIME } from './consts.js';
 
-const getRandomPositiveInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
@@ -41,5 +34,5 @@ const debounce = (callback, timeoutDelay = TIMEOUT_DELAY) => {
   };
 };
 
-export { getRandomPositiveInteger, isEscapeKey, checkStringLength, showAlert, debounce, shuffleArray };
+export { isEscapeKey, checkStringLength, showAlert, debounce, shuffleArray };
 
