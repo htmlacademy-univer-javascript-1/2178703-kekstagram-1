@@ -27,6 +27,7 @@ const closeForm  = () => {
   body.classList.remove('modal-open');
   removeScaleContainer();
   removeEffects();
+  imgUploadField.value = '';
   document.removeEventListener('keydown', onButtonEscKeydown);
   closeButton.removeEventListener('click', onCloseButtonClick);
 };
